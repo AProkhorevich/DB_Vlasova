@@ -1,0 +1,10 @@
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.csproj.AssemblyReference.cache
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.Form1.resources
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.csproj.GenerateResource.cache
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.Properties.Resources.resources
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.csproj.CoreCompileInputs.cache
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\bin\Debug\LinqFormPMI32.exe.config
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\bin\Debug\LinqFormPMI32.exe
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\bin\Debug\LinqFormPMI32.pdb
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.exe
+C:\Users\Anatoliy\source\repos\DB_Vlasova-main\obj\Debug\LinqFormPMI32.pdb

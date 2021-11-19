@@ -115,6 +115,7 @@ namespace LinqFormPMI32
                                    where work.mark > 3
                                    select new { fio = student.name, mark = work.mark};
             dgMoreThen3.DataSource = StudentsWith4Or5.ToList();
+            tbAvg.Text = StudentsWith4Or5.Count().ToString();
         }
 
         private void btnAfter2000_Click(object sender, EventArgs e)
@@ -127,53 +128,27 @@ namespace LinqFormPMI32
 
         private void StudentsWithSameProfessor_Click(object sender, EventArgs e)
         {
-            var numberOfStudents = cw.Count(item => item.mark)
-            dgStudentsWithSameProfessor.DataSource = numberOfStudents.ToList();
+            var numberOfStudents = (from cource in cw
+                                    group cource by cource.professorName into cnt
+                                    select new { name = cnt.Key, count = cnt.Count() }).ToList();
+            dgStudentsWithSameProfessor.DataSource = numberOfStudents;
+
         }
 
-        //private void Button1_Click(object sender, EventArgs e)
-        //{
-        //    var workersLess35 = from item in st
-        //                        where item.year > DateTime.Now.Year - 35
-        //                        select new { fio = item.name, profession = item.profession };
-        //    dgResult.DataSource = workersLess35.ToList();
-        //}
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            var Students = (from cource in cw
+                                    orderby cource.professorName
+                            select new { ProfessorName = cource.professorName }).Distinct().ToList();
+            dgSorted.DataSource = Students;
+        }
 
-        //private void Button2_Click(object sender, EventArgs e)
-        //{
-        //    float maxSalary2 = cw.Max(t=>t.salary2);
-        //    //var result = (from it_lw in st
-        //    //              from it_ls in cw
-        //    //              let maxSalary2 = cw.Max(t => t.salary2)
-        //    //              where it_lw.StudentId == it_ls.StudentId && it_ls.salary2 == maxSalary2
-        //    //              select new { fio = it_lw.name,
-        //    //                  department = it_lw.department,
-        //    //                  maxSalary = it_ls.salary2 }).ToList();
-        //    var result = st.Join(cw,
-        //        first => first.code,
-        //        second => second.StudentId,
-        //        (first, second) => new
-        //        {
-        //            fio = first.name,
-        //            department = first.department,
-        //            maxsalary = second.salary2
-        //        }).Where(t => t.maxsalary == maxSalary2).ToList();
-        //    dgResult.DataSource = result;
-        //}
-
-        //private void Button3_Click(object sender, EventArgs e)
-        //{
-        //    var result = from item in st
-        //                 group item by item.department;
-        //    listBox1.Items.Clear();
-        //    foreach(IGrouping<string,Student> gr in result)
-        //    {
-        //        listBox1.Items.Add(gr.Key);
-        //        foreach(var it in gr)
-        //        {
-        //            listBox1.Items.Add("   " + it);
-        //        }
-        //    }
-        //}
+        private void btnAvg_Click(object sender, EventArgs e)
+        {
+            var avg = (from work in cw join student in st on work.studentId equals student.Id
+                       where student.course == 3
+                       select work.mark ).Average();
+            tbAvg.Text = avg.ToString();
+        }
     }
 }
